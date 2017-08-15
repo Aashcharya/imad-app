@@ -1,13 +1,23 @@
 var button= document.getElementById('counter');
-var counter =0;
 button.onclick=function ()
 {
-    // make request
-    
+    // create request
+    var req = new XMLHttpRequest();
     //Response
-    
-    //Render the variable
-    counter =counter +1;
-    var span=document.getElementById('count');
+    req.onreadystatechange = function()
+    {
+        if(request.readystate === XMLHttpRequest.DONE)
+        //Action
+        {
+          if(request.status === 200)
+          {
+             var counter = req.responseText;
+               var span=document.getElementById('count');
     span.innerHTML= counter.toString();
+          }
+        }
+    };
+  //make request
+  request.open('GET','http://foresight.artista.imad.hasura.io/counter',true);
+  request.send(null);
 };
