@@ -4,7 +4,7 @@ var element = document.getElementById('main-text');
 element.innerHTML ='New value';
 
 
-var img=document.getElementById('img');
+var img=document.getElementById('puffy');
 var marginleft =0;
 function moveRight()
 {
