@@ -1,18 +1,13 @@
-console.log('Loaded!');
-var element = document.getElementById('main-text');
-
-element.innerHTML ='New value';
-
-
-var img=document.getElementById('puffy');
-var marginleft =0;
-function moveRight()
+var button= document.getElementById('counter');
+var counter =0;
+button.onclick=function ()
 {
-    marginLeft = marginleft + 10;
-    img.style.marginleft = marginleft +'px';
-}
-
-img.onclick =function()
-{
-    var interval = setInterval(moveRight,100);
+    // make request
+    
+    //Response
+    
+    //Render the variable
+    counter =counter +1;
+    var span=document.getElementById('count');
+    span.innerHTML= counter.toString();
 };
