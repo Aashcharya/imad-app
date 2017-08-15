@@ -5,23 +5,34 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleonet= 
-{
-  title:'Article One | Aashcharya',
+var articles ={ 
+    
+'article-one': { title:'Article One | Aashcharya',
   heading:'Article One',
   date:'Aug 15,2017',
   content:`<p>
-              This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.is is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.
+              This is the content for my first article.This is the content for my first web page.
             </p>
-            
-            <p>
-              This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.is is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.
-            </p>
-            
-            <p>
-              This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.is is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.This is the content for my first web page.
-            </p>`
+            `
   
+},
+'article-two':{ title:'Article Two | Aashcharya',
+  heading:'Article Two',
+  date:'Aug 16,2017',
+  content:`<p>
+              This is the content for my second article.This is the content for my first web page.
+            </p>
+            `
+  
+},
+'article-there':{ title:'Article There | Aashcharya',
+  heading:'Article There',
+  date:'Aug 17,2017',
+  content:`<p>
+              This is the content for my third article.This is the content for my first web page.
+            </p>
+            `
+ },
 };
 
 function create (data)
@@ -71,19 +82,10 @@ return htmltemp;
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/article-one', function (req, res)
+app.get('/:articleName', function (req, res)
 {
-     res.send(create(articleone));
-});
-
-app.get('/article-two', function (req, res)
-{
-   res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-There', function (req, res)
-{
-    res.sendFile(path.join(__dirname, 'ui', 'article-there.html'));
+    var articleName=req.params.articleName;
+     res.send(create(articles[articleName]));
 });
 
 app.get('/ui/style.css', function (req, res) {
