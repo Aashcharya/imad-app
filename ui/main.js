@@ -2,22 +2,22 @@ var button= document.getElementById('counter');
 button.onclick=function ()
 {
     // create request
-    var req = new XMLHttpRequest();
+    var request = new XMLHttpRequest();
     //Response
-    req.onreadystatechange = function()
+    request.onreadystatechange = function()
     {
-        if(req.readystate === XMLHttpRequest.DONE)
+        if(request.readystate === XMLHttpRequest.DONE)
         //Action
         {
-          if(req.status === 200)
+          if(request.status === 200)
           {
-             var counter = req.responseText;
+             var counter = request.responseText;
                var span=document.getElementById('count');
     span.innerHTML= counter.toString();
           }
         }
     };
   //make request
-  req.open('GET','http://foresightartista.imad.hasura-app.io/counter',true);
-  req.send(null);
+  request.open('GET','http://foresightartista.imad.hasura-app.io/counter',true);
+  request.send(null);
 };
